@@ -52,7 +52,8 @@ router.get("/get", function(req, res){
 
             var imageReference = {
               _id : req.body.category_id,
-              filename : req.file.filename,
+              category_name : req.body.category_name,
+              cat_image_url : "https://nodejs-image-practice.herokuapp.com/Images/"+req.file.filename,
               path : req.file.path,
             }
 
