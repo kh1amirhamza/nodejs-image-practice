@@ -46,28 +46,28 @@ router.get("/get", function(req, res){
           let collection = db.collection("category");
 
          //Getting Documents count for genarate Category ID then create category...
-   collection.countDocuments({}).then((count) => {
+          collection.countDocuments({}).then((count) => {
             console.log(count);
+          });   
 
             var imageReference = {
-              _id : "CAT_"+(count+1),
+              _id : req.body.category_id,
               filename : req.file.filename,
               path : req.file.path,
-              categoryname: req.body.category_name
             }
 
             //Create Category...
             collection.insertOne(imageReference, function(error, result){
               if (error) {
-                console.log("Image Upload to MongoDB has Failed.");
+                console.log("Category Image Upload to MongoDB has Failed.");
               }else{
-                console.log("Image Upload to MongoDB has successful.");
+                console.log("Category Image Upload to MongoDB has successful.");
                 console.log(req.file);
               }
             }) 
 
 
-        });         
+         
 
         }
 
